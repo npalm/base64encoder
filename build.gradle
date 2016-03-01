@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'maven'
+apply plugin: 'java'
+
+
+apply from: "${rootDir}/gradle/dependencies.gradle"
+
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+    compile libraries.tools
+
+    testCompile libraries.test
+}
+
+jar {
+    from {
+        (configurations.runtime).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
+    manifest {
+        attributes 'Main-Class': 'Encoder'
+    }
+}
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
+

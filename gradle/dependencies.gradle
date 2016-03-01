@@ -1,0 +1,13 @@
+ext { libraries = [:] }
+
+libraries.test = [
+        'junit:junit:4.11',
+        'org.mockito:mockito-core:1.+',
+        'org.springframework.boot:spring-boot-starter-test:1.2.7.RELEASE',
+        'com.jayway.restassured:rest-assured:2.5.0'
+]
+
+libraries.tools = [
+        'com.google.guava:guava:18.0'
+]
+
